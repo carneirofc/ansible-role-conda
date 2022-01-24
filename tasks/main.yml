@@ -18,3 +18,16 @@
 - include_tasks: setup-RedHat.yml
   when:
     - ansible_os_family == 'RedHat'
+
+- name: Create a conda group for multi user install
+  group:
+    name: "{{ conda_group_name }}"
+    gid: "{{ conda_group_gid }}"
+    state: present
+
+- name: Change conda permissions
+  file:
+    path: /opt/conda
+    owner: root
+    group: "{{ conda_group_name }}"
+    mode: '0775'

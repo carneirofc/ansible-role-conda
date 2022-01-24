@@ -1,1 +1,4 @@
 ---
+# Conda gid and name for multi user /opt install
+conda_group_name: conda
+conda_group_gid: 1100
